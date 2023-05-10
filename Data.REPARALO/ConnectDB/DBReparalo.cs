@@ -31,7 +31,7 @@ namespace Data.REPARALO.ConnectDB
         public DbSet<MSTATE> MSTATE { get; set; }
         public DbSet<MTRADEMARK> MTRADEMARK { get; set; }
         public DbSet<MUSER> MUSER { get; set; }
-        public DbSet<MCLIENT> CLIENT { get; set; }
+        public DbSet<MCLIENT> MCLIENT { get; set; }
         public DbSet<MREPAIRORDER> MREPAIRORDER { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

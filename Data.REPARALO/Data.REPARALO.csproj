@@ -16,9 +16,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="RepairOrder\img\reparalo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="RepairOrder\OrdenReparacion.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="RepairOrder\img\reparalo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +45,7 @@
     <PackageReference Include="MySql.Data" Version="8.0.32" />
     <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.32" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="QuestPDF" Version="2022.12.5" />
     <PackageReference Include="Select.HtmlToPdf.NetCore" Version="22.2.0" />
   </ItemGroup>
 

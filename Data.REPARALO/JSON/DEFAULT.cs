@@ -28,12 +28,15 @@ namespace Data.REPARALO.JSON
     }
     public class ListBox
     {
-        public int ORDENTYPE { get; set; }
-        public int DOCUMENTTYPE { get; set; }
-        public int COUNTRY { get; set; }
-        public int STATE { get; set; }
-        public int CITY { get; set; }
-        public int TRADEMARK { get; set; }
-        public int EQUIPMENTTYPE { get; set; }
+        public int? ORDENTYPE { get; set; }
+        public int? DOCUMENTTYPE { get; set; }
+        public int? COUNTRY { get; set; }
+        public int? STATE { get; set; }
+        public int? CITY { get; set; }
+        public int? TRADEMARK { get; set; }
+        public int? EQUIPMENTTYPE { get; set; }
+        public int? CLIENT { get; set; }
+        public int? REPAIRORDER { get; set; }
+        
     }
 }

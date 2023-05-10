@@ -5,6 +5,8 @@ using Data.REPARALO.OrdenReparacion;
 using Data.REPARALO.RepairOrder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.IO;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ApiRestREPARALO.Controllers.RepairOrder
 {
@@ -33,7 +35,10 @@ namespace ApiRestREPARALO.Controllers.RepairOrder
                 var created = await _IRepairOrderRepository.POSTREPAIRORDER(REPAIRORDE);
                 if (created == null)
                     return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
-                
+
+                var objet = VDEFAULT.Read();
+                objet.REPAIRORDER = created.Id;
+                VDEFAULT.Write(objet);
                 return Ok(new { state = 200, Message = "Proceso completo", result = new { list = created } });
             }
             catch (Exception ex)
@@ -42,23 +47,46 @@ namespace ApiRestREPARALO.Controllers.RepairOrder
             }
         }
         [HttpGet]
-        //[Route("CITY")]
-        //[Route("CITY={CITY}")]
         public async Task<IActionResult> GETREPAIRORDER(string? REPAIRORDE)
         {
             try
             {
+                var obejt = VDEFAULT.Read();
                 if (REPAIRORDE == null)
                 {
                     var Listnull = await _IRepairOrderRepository.GETREPAIRORDER(REPAIRORDE);
                     if (Listnull == null)
                         return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
-                    return Ok(new { state = 200, Message = "Proceso completo", result = new { list = Listnull } });
+                    return Ok(new { state = 200, Message = "Proceso completo", result = new { REPAIRORDER = obejt.REPAIRORDER, list = Listnull } });
                 }
                 var List = await _IRepairOrderRepository.GETREPAIRORDER(REPAIRORDE);
                 if (List == null)
                     return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
-                return Ok(new { state = 200, Message = "Proceso completo", result = new { list = List } });
+                return Ok(new { state = 200, Message = "Proceso completo", result = new { REPAIRORDER = obejt.REPAIRORDER, list = List } });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { state = 430, Message = ex.ToString(), result = new { } });
+            }
+        }
+        [HttpGet]
+        [Route("PDF")]
+        public async Task<IActionResult> GETPDFREPAIRORDER(int? REPAIRORDE)
+        {
+            try
+            {
+                if (REPAIRORDE == null)
+                {
+                    return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                }
+                var Object = await _IRepairOrderRepository.GETPDFREPAIRORDER(REPAIRORDE);
+                if (Object == null)
+                    return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+
+
+                //Stream stream = new MemoryStream(Object);
+                //return Ok(new { state = 200, Message = "Proceso completo", result = new { list = File(stream,"application/pdf","detalleventa.pdf") } });
+                return Ok(new { state = 200, Message = "Proceso completo", result = new { list = Object } });
             }
             catch (Exception ex)
             {

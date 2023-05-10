@@ -31,6 +31,9 @@ namespace Data.REPARALO.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("DocumentNumber")
                         .HasColumnType("longtext");
 

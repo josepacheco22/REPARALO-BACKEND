@@ -157,6 +157,7 @@ namespace Data.REPARALO.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     MDOCUMENTTYPEId = table.Column<int>(type: "int", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     DocumentNumber = table.Column<string>(type: "longtext", nullable: true),
                     FirstName = table.Column<string>(type: "longtext", nullable: true),
                     SecondName = table.Column<string>(type: "longtext", nullable: true),

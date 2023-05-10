@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.REPARALO.Migrations
 {
     [DbContext(typeof(DBReparalo))]
-    [Migration("20230419190928_DBReparaloInit")]
+    [Migration("20230505030409_DBReparaloInit")]
     partial class DBReparaloInit
     {
         /// <inheritdoc />
@@ -33,6 +33,9 @@ namespace Data.REPARALO.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("DocumentNumber")
                         .HasColumnType("longtext");

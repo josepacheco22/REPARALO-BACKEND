@@ -17,6 +17,7 @@ namespace Data.REPARALO.Clients
         public int Id { get; set; }
         public int? MDOCUMENTTYPEId { get; set; }
         public MDOCUMENTTYPE? MDOCUMENTTYPE { get; set; }
+        public DateTime? Date { get; set; }
         public string? DocumentNumber { get; set; }
         public string? FirstName { get; set; }
         public string? SecondName { get; set; }
