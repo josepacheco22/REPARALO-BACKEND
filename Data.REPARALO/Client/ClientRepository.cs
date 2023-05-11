@@ -41,11 +41,11 @@ namespace Data.REPARALO.Client
 
                 if (CLIENT == null)
                 {
-                    var Listnull = _dbReparalo.MCLIENT.Select(u => u );
+                    var Listnull = _dbReparalo.MCLIENT.Select(u => u ).OrderByDescending(a => a.Date);
                     _dbReparalo.SaveChangesAsync();
                     return Listnull;
                 }
-                var List = _dbReparalo.MCLIENT.Where(u =>  u.FirstName.Contains(CLIENT) || u.SecondName.Contains(CLIENT) || u.FirstLastName.Contains(CLIENT) || u.SecondLastName.Contains(CLIENT) || u.DocumentNumber.Contains(CLIENT) ).Select(u => u);
+                var List = _dbReparalo.MCLIENT.Where(u => u.FirstName.Contains(CLIENT) || u.SecondName.Contains(CLIENT) || u.FirstLastName.Contains(CLIENT) || u.SecondLastName.Contains(CLIENT) || u.DocumentNumber.Contains(CLIENT)).Select(u => u).OrderByDescending(a => a.Date); ;
                 _dbReparalo.SaveChangesAsync();
                 return List;
             }

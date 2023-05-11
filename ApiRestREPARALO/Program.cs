@@ -22,13 +22,18 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("*")
                    .AllowAnyHeader();
         });
+    
 });
 // Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers()
+.SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
+.AddJsonOptions(JsonOptions =>
+                    JsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 
 
@@ -36,13 +41,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DBReparalo>(options =>
 {
     options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"));
-    //options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"));
+
+
 });
 
 
 
 
 var app = builder.Build();
+
+
 
 
 using (var scope = app.Services.CreateScope())
