@@ -362,7 +362,6 @@ namespace ApiRestREPARALO.Controllers.ListBox
                         return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
                     var objetNull = VDEFAULT.Read();
                     return Ok(new { state = 200, Message = "Proceso completo", result = new { TRADEMARK = objetNull.TRADEMARK, list = ListNull } });
-
                 }
                 var List = await _IListBoxRepository.GETTRADEMARK(TRADEMARK);
                 if (List == null)

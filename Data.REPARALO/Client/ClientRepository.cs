@@ -34,6 +34,21 @@ namespace Data.REPARALO.Client
                 return null;
             }
         }
+        public async Task<MCLIENT> PUTCLIENT(MCLIENT CLIENT)
+        {
+            try
+            {
+                _dbReparalo.MCLIENT.Update(CLIENT);
+                _dbReparalo.SaveChangesAsync();
+                if (CLIENT.Id < 1)
+                    return null;
+                return CLIENT;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public async Task<IEnumerable<MCLIENT>> GETCLIENT(string? CLIENT)
         {
             try

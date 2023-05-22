@@ -13,5 +13,6 @@ namespace Data.REPARALO.Client
     {
         Task<MCLIENT> POSTCLIENT(MCLIENT CLIENT);
         Task<IEnumerable<MCLIENT>> GETCLIENT(string? CLIENT);
+        Task<MCLIENT> PUTCLIENT(MCLIENT CLIENT);
     }
 }
