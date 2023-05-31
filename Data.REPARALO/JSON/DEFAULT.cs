@@ -37,6 +37,9 @@ namespace Data.REPARALO.JSON
         public int? EQUIPMENTTYPE { get; set; }
         public int? CLIENT { get; set; }
         public int? REPAIRORDER { get; set; }
-        
+        public int? ACCESSORYTYPE { get; set; }
+        public int? REPLACEMENTTYPE { get; set; }
+
+
     }
 }

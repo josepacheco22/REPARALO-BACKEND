@@ -375,8 +375,108 @@ namespace ApiRestREPARALO.Controllers.ListBox
             }
         }
 
-        
-            
+
+        [HttpPost]
+        [Route("ACCESSORYTYPE")]
+        public async Task<IActionResult> POSTACCESSORYTYPE([FromBody] MACCESSORYTYPE ACCESSORYTYPE)
+        {
+            try
+            {
+                if (ACCESSORYTYPE == null)
+                    return Ok(new { state = 400, Message = "Objeto nulo o vacio", result = new { } });
+                if (!ModelState.IsValid)
+                    return Ok(new { state = 410, Message = "Objeto invalido", result = new { } });
+                var created = await _IListBoxRepository.POSTACCESSORYTYPE(ACCESSORYTYPE);
+                if (created == null)
+                    return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                var objet = VDEFAULT.Read();
+                objet.ACCESSORYTYPE = created.Id;
+                VDEFAULT.Write(objet);
+                return Ok(new { state = 200, Message = "Proceso completo", result = created });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { state = 430, Message = ex.ToString(), result = new { } });
+            }
+        }
+        [HttpGet]
+        [Route("ACCESSORYTYPE")]
+        [Route("ACCESSORYTYPE={ACCESSORYTYPE}")]
+        public async Task<IActionResult> GETACCESSORYTYPE(string? ACCESSORYTYPE)
+        {
+            try
+            {
+                if (ACCESSORYTYPE == null)
+                {
+                    var ListNull = await _IListBoxRepository.GETACCESSORYTYPE(ACCESSORYTYPE);
+                    if (ListNull == null)
+                        return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                    var objetNull = VDEFAULT.Read();
+                    return Ok(new { state = 200, Message = "Proceso completo", result = new { ACCESSORYTYPE = objetNull.ACCESSORYTYPE, list = ListNull } });
+                }
+                var List = await _IListBoxRepository.GETACCESSORYTYPE(ACCESSORYTYPE);
+                if (List == null)
+                    return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                var obejt = VDEFAULT.Read();
+                return Ok(new { state = 200, Message = "Proceso completo", result = new { ACCESSORYTYPE = obejt.ACCESSORYTYPE, list = List } });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { state = 430, Message = ex.ToString(), result = new { } });
+            }
+        }
+
+        [HttpPost]
+        [Route("REPLACEMENTTYPE")]
+        public async Task<IActionResult> POSTREPLACEMENTTYPE([FromBody] MREPLACEMENTTYPE REPLACEMENTTYPE)
+        {
+            try
+            {
+                if (REPLACEMENTTYPE == null)
+                    return Ok(new { state = 400, Message = "Objeto nulo o vacio", result = new { } });
+                if (!ModelState.IsValid)
+                    return Ok(new { state = 410, Message = "Objeto invalido", result = new { } });
+                var created = await _IListBoxRepository.POSTREPLACEMENTTYPE(REPLACEMENTTYPE);
+                if (created == null)
+                    return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                var objet = VDEFAULT.Read();
+                objet.REPLACEMENTTYPE = created.Id;
+                VDEFAULT.Write(objet);
+                return Ok(new { state = 200, Message = "Proceso completo", result = created });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { state = 430, Message = ex.ToString(), result = new { } });
+            }
+        }
+        [HttpGet]
+        [Route("REPLACEMENTTYPE")]
+        [Route("REPLACEMENTTYPE={REPLACEMENTTYPE}")]
+        public async Task<IActionResult> GETREPLACEMENTTYPE(string? REPLACEMENTTYPE)
+        {
+            try
+            {
+                if (REPLACEMENTTYPE == null)
+                {
+                    var ListNull = await _IListBoxRepository.GETREPLACEMENTTYPE(REPLACEMENTTYPE);
+                    if (ListNull == null)
+                        return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                    var objetNull = VDEFAULT.Read();
+                    return Ok(new { state = 200, Message = "Proceso completo", result = new { REPLACEMENTTYPE = objetNull.REPLACEMENTTYPE, list = ListNull } });
+                }
+                var List = await _IListBoxRepository.GETREPLACEMENTTYPE(REPLACEMENTTYPE);
+                if (List == null)
+                    return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                var obejt = VDEFAULT.Read();
+                return Ok(new { state = 200, Message = "Proceso completo", result = new { REPLACEMENTTYPE = obejt.REPLACEMENTTYPE, list = List } });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { state = 430, Message = ex.ToString(), result = new { } });
+            }
+        }
+
+
 
     }
 }
