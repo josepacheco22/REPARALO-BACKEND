@@ -1,6 +1,8 @@
 ﻿
 using Data.REPARALO.Clients;
 using Data.REPARALO.LIstBox;
+using Data.REPARALO.ListStore;
+using Data.REPARALO.ListStore.Replacement;
 using Data.REPARALO.RepairOrder;
 using Data.REPARALO.Users;
 using Microsoft.EntityFrameworkCore;
@@ -30,9 +32,13 @@ namespace Data.REPARALO.ConnectDB
         public DbSet<MORDENTYPE> MORDENTYPE { get; set; }
         public DbSet<MSTATE> MSTATE { get; set; }
         public DbSet<MTRADEMARK> MTRADEMARK { get; set; }
+        public DbSet<MREPLACEMENTTYPE> MREPLACEMENTTYPE { get; set; }
+        public DbSet<MACCESSORYTYPE> MACCESSORYTYPE { get; set; }
         public DbSet<MUSER> MUSER { get; set; }
         public DbSet<MCLIENT> MCLIENT { get; set; }
         public DbSet<MREPAIRORDER> MREPAIRORDER { get; set; }
+        public DbSet<MREPLACEMENT> MREPLACEMENT { get; set; }
+        public DbSet<MACCESSORY> MACCESSORY { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,11 +50,17 @@ namespace Data.REPARALO.ConnectDB
             modelBuilder.Entity<MSTATE>().ToTable("STATE");
             modelBuilder.Entity<MTRADEMARK>().ToTable("TRADEMARK");
 
-
+            modelBuilder.Entity<MREPLACEMENTTYPE>().ToTable("REPLACEMENTTYPE");
+            modelBuilder.Entity<MACCESSORYTYPE>().ToTable("ACCESSORYTYPE");
+            
             modelBuilder.Entity<MUSER>().ToTable("USER");
 
             modelBuilder.Entity<MCLIENT>().ToTable("CLIENT");
             modelBuilder.Entity<MREPAIRORDER>().ToTable("REPAIRORDER");
+
+
+            modelBuilder.Entity<MREPLACEMENT>().ToTable("REPLACEMENT");
+            modelBuilder.Entity<MACCESSORY>().ToTable("ACCESSORY");
 
 
         }

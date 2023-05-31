@@ -3,6 +3,7 @@ using System;
 using Data.REPARALO.ConnectDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.REPARALO.Migrations
 {
     [DbContext(typeof(DBReparalo))]
-    partial class DBReparaloModelSnapshot : ModelSnapshot
+    [Migration("20230530212028_DBReparaloInit1")]
+    partial class DBReparaloInit1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

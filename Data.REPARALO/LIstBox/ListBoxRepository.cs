@@ -308,5 +308,75 @@ namespace Data.REPARALO.OrdenReparacion
                 return null;
             }
         }
+        public async Task<MREPLACEMENTTYPE> POSTREPLACEMENTTYPE(MREPLACEMENTTYPE REPLACEMENTTYPE)
+        {
+            try
+            {
+                _dbReparalo.MREPLACEMENTTYPE.Add(REPLACEMENTTYPE);
+                _dbReparalo.SaveChangesAsync();
+                if (REPLACEMENTTYPE.Id < 1)
+                    return null;
+                return REPLACEMENTTYPE;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<IEnumerable<MREPLACEMENTTYPE>> GETREPLACEMENTTYPE(string? REPLACEMENTTYPE)
+        {
+            try
+            {
+                if (REPLACEMENTTYPE == null)
+                {
+                    var list = _dbReparalo.MREPLACEMENTTYPE.Select(u => u);
+                    _dbReparalo.SaveChangesAsync();
+                    return list;
+                }
+                var list2 = _dbReparalo.MREPLACEMENTTYPE.Select(u => u).Where(u => u.Name.Contains(REPLACEMENTTYPE));
+                _dbReparalo.SaveChangesAsync();
+                return list2;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<MACCESSORYTYPE> POSTACCESSORYTYPE(MACCESSORYTYPE ACCESSORYTYPE)
+        {
+            try
+            {
+                _dbReparalo.MACCESSORYTYPE.Add(ACCESSORYTYPE);
+                _dbReparalo.SaveChangesAsync();
+                if (ACCESSORYTYPE.Id < 1)
+                    return null;
+                return ACCESSORYTYPE;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public async Task<IEnumerable<MACCESSORYTYPE>> GETACCESSORYTYPE(string? ACCESSORYTYPE)
+        {
+            try
+            {
+                if (ACCESSORYTYPE == null)
+                {
+                    var list = _dbReparalo.MACCESSORYTYPE.Select(u => u);
+                    _dbReparalo.SaveChangesAsync();
+                    return list;
+                }
+                var list2 = _dbReparalo.MACCESSORYTYPE.Select(u => u).Where(u => u.Name.Contains(ACCESSORYTYPE));
+                _dbReparalo.SaveChangesAsync();
+                return list2;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
