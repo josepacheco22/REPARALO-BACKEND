@@ -17,7 +17,6 @@ namespace Data.REPARALO.ListStore.Replacement
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public DateTime? Date { get; set; }
-        public DateTime? PurchaseDate { get; set; }
         public string? IdInvoice { get; set; }
         public int? MEQUIPMENTTYPEId { get; set; }
         public MEQUIPMENTTYPE? MEQUIPMENTTYPE { get; set; }
@@ -28,7 +27,6 @@ namespace Data.REPARALO.ListStore.Replacement
         public int? Type { get; set; }
         public string? Model { get; set; }
         public string? Note { get; set; }
-        public int? UserRegistration { get; set; }
         public int? Quantity { get; set; }
         public int? QuantityAvailable { get; set; }
         public int? AmountUsed { get; set; }
