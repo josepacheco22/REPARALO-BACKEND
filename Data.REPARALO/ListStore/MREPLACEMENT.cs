@@ -24,7 +24,6 @@ namespace Data.REPARALO.ListStore.Replacement
         public MTRADEMARK? MTRADEMARK { get; set; }
         public int? MREPLACEMENTTYPEId { get; set; }
         public MREPLACEMENTTYPE? MREPLACEMENTTYPE { get; set; }
-        public int? Type { get; set; }
         public string? Model { get; set; }
         public string? Note { get; set; }
         public int? Quantity { get; set; }

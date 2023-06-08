@@ -105,7 +105,7 @@ namespace Data.REPARALO.RepairOrder
                 {
                     document.Page(page =>
                     {
-                        var ruteImage = Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory()), "Data.REPARALO\\RepairOrder\\img\\reparalo.png");
+                        var ruteImage = Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory()), "Files\\reparalo.png");
                         byte[] imageData = System.IO.File.ReadAllBytes(ruteImage);
                         var h1 = 14;
                         var h2 = 11;

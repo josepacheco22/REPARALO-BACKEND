@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
+
 //  cors
 builder.Services.AddCors(options =>
 {
@@ -61,7 +62,7 @@ using (var scope = app.Services.CreateScope())
 
 
 
-// Configure the HTTP request pipeline.
+//Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -69,6 +70,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 
