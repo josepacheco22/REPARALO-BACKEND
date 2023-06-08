@@ -59,5 +59,15 @@ namespace Data.REPARALO.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] DEFAULT {
+            get {
+                object obj = ResourceManager.GetObject("DEFAULT", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
