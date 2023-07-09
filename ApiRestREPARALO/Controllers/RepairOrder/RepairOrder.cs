@@ -1,5 +1,5 @@
-﻿using Data.REPARALO.ConnectDB;
-using Data.REPARALO.JSON;
+﻿using ApiRestREPARALO.JSON;
+using Data.REPARALO.ConnectDB;
 using Data.REPARALO.LIstBox;
 using Data.REPARALO.OrdenReparacion;
 using Data.REPARALO.RepairOrder;
@@ -23,7 +23,6 @@ namespace ApiRestREPARALO.Controllers.RepairOrder
             _configuration = configuration;
         }
         [HttpPost]
-        //[Route("CITY")]
         public async Task<IActionResult> POSTREPAIRORDER([FromBody] MREPAIRORDER REPAIRORDE)
         {
             try

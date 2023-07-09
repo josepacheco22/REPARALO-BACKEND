@@ -59,4 +59,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="JSON\DEFAULT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

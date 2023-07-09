@@ -19,13 +19,16 @@ using System.Reflection;
 using Google.Protobuf.WellKnownTypes;
 using static System.Net.Mime.MediaTypeNames;
 using Data.REPARALO.Clients;
-using Data.REPARALO.JSON;
+//using ApiRestREPARALO.JSON;
+
+
+//using Data.REPARALO.JSON;
 
 namespace Data.REPARALO.RepairOrder
 {
     public class RepairOrderRepository : IRepairOrderRepository
     {
-        public DEFAULT VDEFAULT = new DEFAULT();
+        //public DEFAULT VDEFAULT = new DEFAULT();
         private readonly DBReparalo _dbReparalo;
         public RepairOrderRepository(DBReparalo connectionstring)
         {
@@ -62,13 +65,13 @@ namespace Data.REPARALO.RepairOrder
                 _dbReparalo.SaveChangesAsync();
                 if (REPAIRORDER.Id < 1)
                     return null;
-                var objet = VDEFAULT.Read();
+                /*var objet = VDEFAULT.Read();
                 objet.REPAIRORDER = REPAIRORDER.Id;
                 objet.CLIENT = REPAIRORDER.MCLIENTId;
                 objet.ORDENTYPE = REPAIRORDER.MORDENTYPEId;
                 objet.TRADEMARK = REPAIRORDER.MTRADEMARKId;
                 objet.EQUIPMENTTYPE = REPAIRORDER.MEQUIPMENTTYPEId;
-                VDEFAULT.Write(objet);
+                VDEFAULT.Write(objet);*/
                 return REPAIRORDER;
             }
             catch (Exception)

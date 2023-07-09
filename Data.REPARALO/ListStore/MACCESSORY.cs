@@ -20,14 +20,11 @@ namespace Data.REPARALO.ListStore
         public string? Code { get; set; }
         public string? Model { get; set; }
         public string? SerialNumber { get; set; }
-
         public string? IdInvoice { get; set; }
         public int? MTRADEMARKId { get; set; }
         public MTRADEMARK? MTRADEMARK { get; set; }
         public int? MACCESSORYTYPEId { get; set; }
         public MACCESSORYTYPE? MACCESSORYTYPE { get; set; }
-
-
         public int? Type { get; set; }
         public string? Description { get; set; }
         public string? Detail { get; set; }
