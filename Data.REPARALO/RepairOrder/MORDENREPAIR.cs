@@ -34,8 +34,8 @@ namespace Data.REPARALO.RepairOrder
         public string? Model { get; set; }
         public int? MEQUIPMENTTYPEId { get; set; }
         public MEQUIPMENTTYPE? MEQUIPMENTTYPE { get; set; }
-        //public int? MCOLOURId { get; set; }
-        //public MCOLOUR? MCOLOUR { get; set; }
+        public int? MCOLORId { get; set; }
+        public MCOLOR? MCOLOR { get; set; }
         public string? CODE { get; set; }
         public string? IMEI1 { get; set; }
         public string? IMEI2 { get; set; }

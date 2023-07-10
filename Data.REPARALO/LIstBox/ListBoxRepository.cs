@@ -520,5 +520,58 @@ namespace Data.REPARALO.OrdenReparacion
                 return null;
             }
         }
+
+
+        public async Task<MCOLOR> POSTCOLOR(MCOLOR COLOR)
+        {
+            try
+            {
+                _dbReparalo.MCOLOR.Add(COLOR);
+                _dbReparalo.SaveChangesAsync();
+                if (COLOR.Id < 1)
+                    return null;
+                return COLOR;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public async Task<IEnumerable<MCOLOR>> GETCOLOR(string? COLOR)
+        {
+            try
+            {
+                if (COLOR == null)
+                {
+                    var list = _dbReparalo.MCOLOR.Select(u => u);
+                    _dbReparalo.SaveChangesAsync();
+                    return list;
+                }
+                var list2 = _dbReparalo.MCOLOR.Select(u => u).Where(u => u.Name.Contains(COLOR));
+                _dbReparalo.SaveChangesAsync();
+                return list2;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<MCOLOR> GETCOLORById(int? COLOR)
+        {
+            try
+            {
+                if (COLOR == null)
+                    return null;
+                var obj = _dbReparalo.MCOLOR.Where(u => u.Id.Equals(COLOR)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

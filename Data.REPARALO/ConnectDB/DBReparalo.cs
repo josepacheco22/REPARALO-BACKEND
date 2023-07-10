@@ -39,6 +39,7 @@ namespace Data.REPARALO.ConnectDB
         public DbSet<MREPAIRORDER> MREPAIRORDER { get; set; }
         public DbSet<MREPLACEMENT> MREPLACEMENT { get; set; }
         public DbSet<MACCESSORY> MACCESSORY { get; set; }
+        public DbSet<MCOLOR> MCOLOR { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -61,6 +62,7 @@ namespace Data.REPARALO.ConnectDB
 
             modelBuilder.Entity<MREPLACEMENT>().ToTable("REPLACEMENT");
             modelBuilder.Entity<MACCESSORY>().ToTable("ACCESSORY");
+            modelBuilder.Entity<MCOLOR>().ToTable("COLOR");
 
 
         }

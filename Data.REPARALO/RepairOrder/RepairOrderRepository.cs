@@ -62,13 +62,15 @@ namespace Data.REPARALO.RepairOrder
                         Model = u.Model,
                         MEQUIPMENTTYPEId = u.MEQUIPMENTTYPEId,
                         MEQUIPMENTTYPE = u.MEQUIPMENTTYPE,
+                        MCOLORId = u.MCOLORId,
+                        MCOLOR = u.MCOLOR,
+                        CODE= u.CODE,
                         IMEI1 = u.IMEI1,
                         IMEI2 = u.IMEI2,
                         Accessories = u.Accessories,
                         Symptoms = u.Symptoms,
                         State = u.State,
                         Active = u.Active
-
                 });
 
 

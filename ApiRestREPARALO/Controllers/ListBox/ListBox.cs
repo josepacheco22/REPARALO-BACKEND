@@ -478,5 +478,59 @@ namespace ApiRestREPARALO.Controllers.ListBox
 
 
 
+
+
+        [HttpPost]
+        [Route("COLOR")]
+        public async Task<IActionResult> POSTCOLOR([FromBody] MCOLOR COLOR)
+        {
+            try
+            {
+                if (COLOR == null)
+                    return Ok(new { state = 400, Message = "Objeto nulo o vacio", result = new { } });
+                if (!ModelState.IsValid)
+                    return Ok(new { state = 410, Message = "Objeto invalido", result = new { } });
+                var created = await _IListBoxRepository.POSTCOLOR(COLOR);
+                if (created == null)
+                    return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                var objet = VDEFAULT.Read();
+                objet.COLOR = created.Id;
+                VDEFAULT.Write(objet);
+                return Ok(new { state = 200, Message = "Proceso completo", result = created });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { state = 430, Message = ex.ToString(), result = new { } });
+            }
+        }
+        [HttpGet]
+        [Route("COLOR")]
+        [Route("COLOR={COLOR}")]
+        public async Task<IActionResult> GETCOLOR(string? COLOR)
+        {
+            try
+            {
+                if (COLOR == null)
+                {
+                    var ListNull = await _IListBoxRepository.GETCOLOR(COLOR);
+                    if (ListNull == null)
+                        return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                    var objetNull = VDEFAULT.Read();
+                    return Ok(new { state = 200, Message = "Proceso completo", result = new { DOCUMENTTYPE = objetNull.DOCUMENTTYPE, list = ListNull } });
+                }
+                var List = await _IListBoxRepository.GETCOLOR(COLOR);
+                if (List == null)
+                    return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
+                var obejt = VDEFAULT.Read();
+                return Ok(new { state = 200, Message = "Proceso completo", result = new { COLOR = obejt.COLOR, list = List } });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { state = 430, Message = ex.ToString(), result = new { } });
+            }
+        }
+
+
+
     }
 }

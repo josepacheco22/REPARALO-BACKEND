@@ -36,6 +36,10 @@ namespace Data.REPARALO.LIstBox
         Task<IEnumerable<MSTATE>> GETSTATE(string? STATE);
         Task<MSTATE> GETSTATEById(int? STATE);
 
+        Task<MCOLOR> POSTCOLOR(MCOLOR COLOR);
+        Task<IEnumerable<MCOLOR>> GETCOLOR(string? COLOR);
+        Task<MCOLOR> GETCOLORById(int? COLOR);
+
         Task<MTRADEMARK> POSTTRADEMARK(MTRADEMARK TRADEMARK);
         Task<IEnumerable<MTRADEMARK>> GETTRADEMARK(string? TRADEMARK);
         Task<MTRADEMARK> GETTRADEMARKById(int? TRADEMARK);
