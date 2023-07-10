@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,9 @@ namespace Data.REPARALO.RepairOrder
         public string? Model { get; set; }
         public int? MEQUIPMENTTYPEId { get; set; }
         public MEQUIPMENTTYPE? MEQUIPMENTTYPE { get; set; }
+        //public int? MCOLOURId { get; set; }
+        //public MCOLOUR? MCOLOUR { get; set; }
+        public string? CODE { get; set; }
         public string? IMEI1 { get; set; }
         public string? IMEI2 { get; set; }
         public string? Accessories { get; set; }

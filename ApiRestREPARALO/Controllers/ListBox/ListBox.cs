@@ -38,7 +38,7 @@ namespace ApiRestREPARALO.Controllers.ListBox
                 if (created == null)
                     return Ok(new { state = 420, Message = "No fue posible completar la acción", result = new { } });
                 var objet = VDEFAULT.Read();
-                var Country = await _IListBoxRepository.GETSTATEId(created.MSTATEId);
+                var Country = await _IListBoxRepository.GETSTATEById(created.MSTATEId);
                 objet.COUNTRY = Country.MCOUNTRYId;
                 objet.STATE = created.MSTATEId;
                 objet.CITY = created.Id;

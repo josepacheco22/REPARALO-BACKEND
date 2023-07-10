@@ -56,6 +56,22 @@ namespace Data.REPARALO.OrdenReparacion
                 return null;
             }
         }
+
+        public async Task<MCITY> GETCITYById(int? CITY)
+        {
+            try
+            {
+                if (CITY == null)
+                    return null;
+                var obj = _dbReparalo.MCITY.Where(u => u.Id.Equals(CITY)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public async Task<MCOUNTRY> POSTCOUNTRY(MCOUNTRY COUNTRY)
         {
             try
@@ -110,6 +126,32 @@ namespace Data.REPARALO.OrdenReparacion
                 return null;
             }
         }
+        public async Task<MCOUNTRY> GETCOUNTRYById(int? COUNTRY)
+        {
+            try
+            {
+                if (COUNTRY == null)
+                    return null;
+                var obj = _dbReparalo.MCOUNTRY.Where(u => u.Id.Equals(COUNTRY)).Select(u => new MCOUNTRY
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    MSTATE = u.MSTATE.Select(u => new MSTATE
+                    {
+                        Id = u.Id,
+                        Name = u.Name,
+                        MCITY = u.MCITY.Select(u => new MCITY { Id = u.Id, Name = u.Name })
+                    })
+                }).FirstOrDefault();
+                //var obj = _dbReparalo.MCITY.Where(u => u.Id.Equals(COUNTRY)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public async Task<MDOCUMENTTYPE> POSTDOCUMENTTYPE(MDOCUMENTTYPE DOCUMENTTYPE)
         {
             try
@@ -138,6 +180,21 @@ namespace Data.REPARALO.OrdenReparacion
                 var list2 = _dbReparalo.MDOCUMENTTYPE.Select(u => u).Where(u => u.Name.Contains(DOCUMENTTYPE));
                 _dbReparalo.SaveChangesAsync();
                 return list2;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public async Task<MDOCUMENTTYPE> GETDOCUMENTTYPEById(int? DOCUMENTTYPE)
+        {
+            try
+            {
+                if (DOCUMENTTYPE == null)
+                    return null;
+                var obj = _dbReparalo.MDOCUMENTTYPE.Where(u => u.Id.Equals(DOCUMENTTYPE)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
             }
             catch (Exception)
             {
@@ -178,6 +235,22 @@ namespace Data.REPARALO.OrdenReparacion
                 return null;
             }
         }
+
+        public async Task<MEQUIPMENTTYPE> GETEQUIPMENTTYPEById(int? EQUIPMENTTYPE)
+        {
+            try
+            {
+                if (EQUIPMENTTYPE == null)
+                    return null;
+                var obj = _dbReparalo.MEQUIPMENTTYPE.Where(u => u.Id.Equals(EQUIPMENTTYPE)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public async Task<MORDENTYPE> POSTORDENTYPE(MORDENTYPE ORDENTYPE)
         {
             try
@@ -206,6 +279,21 @@ namespace Data.REPARALO.OrdenReparacion
                 var list2 = _dbReparalo.MORDENTYPE.Select(u => u).Where(u => u.Name.Contains(ORDENTYPE));
                 _dbReparalo.SaveChangesAsync();
                 return list2;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public async Task<MORDENTYPE> GETORDENTYPEById(int? ORDENTYPE)
+        {
+            try
+            {
+                if (ORDENTYPE == null)
+                    return null;
+                var obj = _dbReparalo.MORDENTYPE.Where(u => u.Id.Equals(ORDENTYPE)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
             }
             catch (Exception)
             {
@@ -256,17 +344,21 @@ namespace Data.REPARALO.OrdenReparacion
                 return null;
             }
         }
-        public async Task<MSTATE> GETSTATEId(int? STATE)
+        public async Task<MSTATE> GETSTATEById(int? STATE)
         {
             try
             {
                 if (STATE == null)
                     return null;
-                if (STATE < 1)
-                    return null;
-                var list2 = _dbReparalo.MSTATE.Where(u => u.Id == STATE).FirstOrDefault();
+                var obj = _dbReparalo.MSTATE.Where(u => u.Id.Equals(STATE)).Select(u => new MSTATE
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    MCITY = u.MCITY.Select(u => new MCITY { Id = u.Id, Name = u.Name })
+                }).FirstOrDefault();
+
                 _dbReparalo.SaveChangesAsync();
-                return list2;
+                return obj;
 
             }
             catch (Exception)
@@ -302,6 +394,22 @@ namespace Data.REPARALO.OrdenReparacion
                 var list2 = _dbReparalo.MTRADEMARK.Select(u => u).Where(u => u.Name.Contains(TRADEMARK));
                 _dbReparalo.SaveChangesAsync();
                 return list2;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public async Task<MTRADEMARK> GETTRADEMARKById(int? TRADEMARK)
+        {
+            try
+            {
+                if (TRADEMARK == null)
+                    return null;
+                var obj = _dbReparalo.MTRADEMARK.Where(u => u.Id.Equals(TRADEMARK)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
+
             }
             catch (Exception)
             {
@@ -344,6 +452,23 @@ namespace Data.REPARALO.OrdenReparacion
             }
         }
 
+        public async Task<MREPLACEMENTTYPE> GETREPLACEMENTTYPEById(int? REPLACEMENTTYPE)
+        {
+            try
+            {
+                if (REPLACEMENTTYPE == null)
+                    return null;
+                var obj = _dbReparalo.MREPLACEMENTTYPE.Where(u => u.Id.Equals(REPLACEMENTTYPE)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public async Task<MACCESSORYTYPE> POSTACCESSORYTYPE(MACCESSORYTYPE ACCESSORYTYPE)
         {
             try
@@ -372,6 +497,23 @@ namespace Data.REPARALO.OrdenReparacion
                 var list2 = _dbReparalo.MACCESSORYTYPE.Select(u => u).Where(u => u.Name.Contains(ACCESSORYTYPE));
                 _dbReparalo.SaveChangesAsync();
                 return list2;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<MACCESSORYTYPE> GETACCESSORYTYPEById(int? ACCESSORYTYPE)
+        {
+            try
+            {
+                if (ACCESSORYTYPE == null)
+                    return null;
+                var obj = _dbReparalo.MACCESSORYTYPE.Where(u => u.Id.Equals(ACCESSORYTYPE)).FirstOrDefault();
+                _dbReparalo.SaveChangesAsync();
+                return obj;
+
             }
             catch (Exception)
             {

@@ -19,6 +19,8 @@ using System.Reflection;
 using Google.Protobuf.WellKnownTypes;
 using static System.Net.Mime.MediaTypeNames;
 using Data.REPARALO.Clients;
+using Data.REPARALO.Users;
+using Data.REPARALO.OrdenReparacion;
 //using ApiRestREPARALO.JSON;
 
 
@@ -30,8 +32,10 @@ namespace Data.REPARALO.RepairOrder
     {
         //public DEFAULT VDEFAULT = new DEFAULT();
         private readonly DBReparalo _dbReparalo;
+        private readonly IListBoxRepository _IListBoxRepository;
         public RepairOrderRepository(DBReparalo connectionstring)
         {
+            _IListBoxRepository = new ListBoxRepository(connectionstring);
             _dbReparalo = connectionstring;
         }
         
@@ -41,11 +45,38 @@ namespace Data.REPARALO.RepairOrder
             {
                 if (REPAIRORDER == null)
                 {
-                    var Listnull = _dbReparalo.MREPAIRORDER.Select(u => new MREPAIRORDER { Id = u.Id});
+                    var Listnull = _dbReparalo.MREPAIRORDER.Where(u => u.Active == true).Select(u => new MREPAIRORDER{
+                        Id = u.Id,
+                        Date = u.Date,
+                        MORDENTYPEId = u.MORDENTYPEId,
+                        MORDENTYPE = u.MORDENTYPE,
+                        MUSERAssignedId = u.MUSERAssignedId,
+                        MUSERAssigned = u.MUSERAssigned,
+                        MUSERCreatedId = u.MUSERCreatedId,
+                        MUSERCreated = u.MUSERCreated,
+                        DeadLine = u.DeadLine,
+                        MCLIENTId = u.MCLIENTId,
+                        MCLIENT = u.MCLIENT,
+                        MTRADEMARKId = u.MTRADEMARKId,
+                        MTRADEMARK = u.MTRADEMARK,
+                        Model = u.Model,
+                        MEQUIPMENTTYPEId = u.MEQUIPMENTTYPEId,
+                        MEQUIPMENTTYPE = u.MEQUIPMENTTYPE,
+                        IMEI1 = u.IMEI1,
+                        IMEI2 = u.IMEI2,
+                        Accessories = u.Accessories,
+                        Symptoms = u.Symptoms,
+                        State = u.State,
+                        Active = u.Active
+
+                });
+
+
+
                     _dbReparalo.SaveChangesAsync();
                     return Listnull;
                 }
-                var List = _dbReparalo.MREPAIRORDER.Select(u => new MREPAIRORDER { Id = u.Id });
+                var List = _dbReparalo.MREPAIRORDER.Where(u => u.Active == true).Select(u => u);
                 _dbReparalo.SaveChangesAsync();
                 return List;
             }
@@ -58,8 +89,6 @@ namespace Data.REPARALO.RepairOrder
         {
             try
             {
-                if (REPAIRORDER.MCLIENTId == 0)
-                    REPAIRORDER.MCLIENTId = 1;
 
                 _dbReparalo.MREPAIRORDER.Add(REPAIRORDER);
                 _dbReparalo.SaveChangesAsync();
